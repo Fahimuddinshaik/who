@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill kon</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+    .one{
+        background: linear-gradient(to top, rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(image.jpg);
+        background-position: center;
+        background-size: cover;
+        height: 200vh;
+    }
+    #on{
+        display: none;
+    }
+    </style>
+</head>
+<body style="background-color: navy ;">
+    <div class="container-fluid one">
+        <div class="container">
+
+            <div class="row">
+                <h1 style="text-align: center; color: white; margin-top: 100px;"><u>WHO THE ONE</u></h1>
+                <h3 style="text-align: center; color: white;">Play the game with your friends and have a fun</h3>
+                <div class="col-lg-8 col-md-12 m-auto">
+                    <p style="color: white; font-size: 20px;">
+                        The Random name will get genarated among the names provided or given by you and this will help you to choose the person easily.
+                        Our Website is build based on problems like whom to choose for a particular action to complete first.<br>
+                        <span style="color:red; font-style: oblique;">* You can use this website in 2 ways :<br>
+                            <span style="color:moccasin;">1) While you can give many names in a single input by giving space between names.<br>
+                                            2) You can give each name on each input by clicking on <b style="color: red;">Next</b> button to generate new input.
+                            </span>
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-lg-6 m-auto" id="divbox">
+                    <input type="text" placeholder="enter your name " class="form-control mt-5 first" id="n1"> <!--give specify class name any like : fisrt-->
+                    <button class="btn btn-success mt-3 col-6" style="margin-left: 100px;" id="btnpre" onclick="nextt()">Next</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <button class="btn btn-primary btn-lg mt-5 col-lg-6" style="margin-left: 100px;" onclick="billkon()">WHO THE ONE?</button>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-6 m-auto">
+                    <h3 style="color: white; font-size: 20px; font-style: italic; text-align: center;" id="on">Members are : </h3>
+                    <span id="pre" style="color: white; font-size: 20px; font-style: italic; text-align: center; margin-left: 50px;"></span>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-md-1 m-auto">
+                <span id="pres" style="color: white; font-size: 30px; font-family: Verdana; text-align: center;"></span>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    function nextt(){
+
+        //creation of name feild
+        let newnode=document.createElement("input");         //element type
+        newnode.classList.add('form-control');               //bootstrap css
+        newnode.classList.add('first');                      // specify the class name because the newnode you are creating comes through that classname      
+        newnode.classList.add('mt-2');
+        newnode.setAttribute("placeholder","enter your name");
+        newnode.setAttribute("font-family","bold");
+
+        let xob=document.getElementById("divbox");           //div box in xob
+        //let yob=document.getElementById("btnpre");
+        xob.insertBefore(newnode,btnpre);                    // div box k andar btnpre button k samme newnode rakna
+    }
+
+    function billkon(){
+
+        document.getElementById("on").style.display="block";
+
+        let bill=document.getElementsByClassName("first");        // call the specify class name you have given
+        let str= "";
+
+        for(let e of bill)
+        {
+            str= str + e.value +' ';
+        }
+        var b=document.getElementById("pre").innerHTML=str;
+        var c=b.split(" ");
+        var d=(Math.floor(Math.random()*c.length));
+        document.getElementById("pres").innerHTML=c[d];
+    }
+</script>
+</html>
